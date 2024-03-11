@@ -1,0 +1,12 @@
+eso si: debo ver el tema de docker par levantar el proyecto!
+
+// EXPANDIR PARA QUE SE REGISTRE UN USUARIO, TODOS CON EL MISMO RANGO
+    -- completado
+    -- me costo mucho debido a que springboot con thymeleaf y spring security
+        -- debo colocar en los href (en form action y href del head - donde va los css- )
+        -- th:action= "@{/namePage}"
+           th:href= "@{/namePage}"
+
+
+// PERO QUE MEDIANTE ALGUIE NDE AFUERA PUEDA OTORGARLE OTRO RANGO
+    -- ampliarlo a futuro!!!

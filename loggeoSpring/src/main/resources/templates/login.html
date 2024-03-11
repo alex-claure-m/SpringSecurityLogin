@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{/css/login2.css}" />
+</head>
+<body>
+<div class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form th:action="@{/login}" method="post">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" required>
+        <br>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+        <br>
+        <button type="submit">Iniciar sesión</button>
+        <p th:if="${error}" style="color: red" th:text="${error}"></p>
+
+        <p>Si no estás registrado, <a href="/register">pulsa aquí</a></p>
+    </form>
+</div>
+</body>
+</html>

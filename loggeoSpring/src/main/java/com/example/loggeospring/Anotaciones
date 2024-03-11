@@ -1,0 +1,151 @@
+@Controller: Esta anotación se utiliza en las clases que actúan como controladores
+en el patrón MVC. Estas clases manejan las solicitudes HTTP y delegan el procesamiento
+de la lógica de negocio a los servicios. En tu caso, UsuarioController sería una clase @Controller.
+
+@Service: Esta anotación se utiliza en las clases que contienen la lógica de negocio.
+Estas clases suelen llamar a los repositorios para recuperar y almacenar datos.
+En tu caso, UsuarioDetailServiceImp sería una clase @Service.
+Esta clase implementa la interfaz UserDetailsService de Spring Security,
+que es una parte integral de la lógica de negocio ya que se encarga de cargar los detalles del
+usuario durante la autenticación.
+
+--> basicamente el Service contiene la logica de negocio pero son las que son llamadas por los repositorios
+y estos repositorios son los que recuperan y almacenan los datos a la base de datos
+
+
+@Repository: Esta anotación se utiliza en las clases que actúan como repositorios,
+que son responsables de recuperar y almacenar datos. Estas clases suelen interactuar
+con la base de datos utilizando tecnologías como JPA o Hibernate. En tu caso, UsuarioRepository sería
+una clase @Repository.
+
+Modelo: Las clases de modelo (como Usuario, Persona, etc.) representan los datos de
+tu aplicación. Estas clases no llevan ninguna de las anotaciones anteriores, pero pueden llevar otras
+anotaciones como @Entity si estás utilizando JPA.
+
+si o si spring security, trabaja con el hasheo de password , sino se hace el bobi y no te busca en la base de datos
+por eso si o si se tiene que encriptar para luego , spring desencripte e iguale si lo que escribiste coincide con el
+la base de datos
+
+clave ademas es diferenciar entre springMVC vs spring RESTFUL , son cosas distintas
+anotaciones distintas, ya que si quiero laburar con SPRINGMVC ,es mediante el patron model, vist, controller
+si es mediante restful, solo devuelve objetos y los datos el objeto, recodemos que puede ser devueltos
+como json/xml, asi que es clave en estos casos usar postman, o laburar con APIS-REST
+donde no necesariamente labure con modelo de vistas, pero lo promordial ademas son las anotaciones
+
+-- SPRING MVC
+@CONTROLLER
+	- para cada controlador que necesite
+	---- BUENO, TAMBIEN CON SPRING MVC PUEDO TRAJABAR CON API EXTERNAS Y ESTAN LAS SIGUIENTES ANOTACIONES
+@REQUESTMAPPING 
+Mapea las solicitudes HTTP a métodos específicos en el controlador. Puede usarse a nivel de clase y de método.
+
+@RequestBody y @ResponseBody:
+Se utilizan para trabajar con contenido del cuerpo de la solicitud (para enviar y recibir datos en formato 
+JSON, por ejemplo).
+
+La anotación @ResponseBody en Spring se utiliza para indicar que el valor de retorno de un método de controlador debe ser serializado directamente en el cuerpo de la respuesta HTTP. En otras palabras, se utiliza para marcar un método o un tipo de retorno como el cuerpo de la respuesta, evitando que Spring lo interprete como una vista a rendizar.
+
+
+ejemplo:
+	@Controller
+	public class MyController {
+
+    	@PostMapping("/processData")
+    	@ResponseBody
+    	public String processData(@RequestBody String data) {
+        	// Procesar la información recibida en el cuerpo de la solicitud
+        	return "Datos procesados: " + data;
+    		}
+	}
+
+
+---------------------SPRING RESTFUL-----------------------------------------------
+@RequestMapping: Esta anotación se utiliza tanto en Spring MVC como en Spring RESTful
+para mapear las solicitudes web a métodos de controlador específicos.
+Puedes especificar el tipo de solicitud HTTP (GET, POST, etc.) y la ruta de la solicitud.
+
+@ResponseBody: En Spring RESTful, esta anotación se utiliza para indicar que el valor de retorno
+de un método de controlador debe ser serializado directamente en el cuerpo de la respuesta HTTP
+(aunque tambien es valido en spring mvc)
+		
+@RestController: Esta es una anotación de conveniencia en Spring RESTful que es en realidad
+una combinación de @Controller y @ResponseBody. Indica que la clase es un controlador
+Donde cada método devuelve un objeto de dominio en lugar de una vista2.
+
+ejemplo:
+	@RestController
+	@RequestMapping("/api")
+	public class MyRestController {
+
+    	@PostMapping("/processData")
+    	public String processData(@RequestBody String data) {
+        	// Procesar la información recibida en el cuerpo de la solicitud
+        	return "Datos procesados en la API: " + data;
+    		}
+	}
+
+ENTENDER COMO ES USAR DTO
+-- es un objeto simple que se utiliza para transportar datos entre procesos o a través de la red.
+que se transporta en distintas capas, ya sea presentacion o otra capa donde necesite manejar datos para 
+otra cosa 
+- se puede usar como claramente una capa de seguridad de por ejemplo
+	si tengo una clase concreta que tiene datos sensibles, como DNI, y contraseña - PERSONA
+	y para presentarlo en la capa de presentacion, requiero llevarme todos los datos de la clse concreta
+	puedo usar DTO - PersonaDTO y ahi le redefino todos aquellos atrbutos que necesito para presentarlo
+- bueno teniendo en cuenta que por el tema de seguridad, puedo guardar los datos una vez que fue validado
+	-- pero entonces. que onda con la clase concreta Persona?
+	-- bueno, no quiere decir que la dejes de usar, sino que se añade a una capa mas de seguridad x ejemplo
+	eje: recibo datos mediante un input de una web, entonces dentro de una funcion
+		registerNewUser(@Valid @RequestBody RegistroUsuarioDTO registroUsuarioDTO)
+			// valido los datos del DTO que recibo por input
+		instancio la clase concreta Persona persona= new Persona()
+	persona.setNombreUsuario(registroUsuarioDTO.getNombreUsuario());
+    	persona.setContrasena(registroUsuarioDTO.getContrasena());
+	personaRepository.save(persona); //recorda que personaRepository es una variable que debe ser declarada
+	-- y en este caso luego de haber validado los datos de la DTO , y que haya guardado
+	-- con el personaRepository.save(persona); le digo que guarde los datos a la clase PERSONA
+	-- que esta relacionado con la entidad persona
+
+- tambien es bueno para SIMPLICIDAD
+Al usar un DTO, haces que tu API sea más fácil de usar. Los clientes solo necesitan proporcionar los datos que realmente necesitas, en lugar de tener que conocer todos los detalles de tu entidad Usuario.
+
+
+------------------------------------ uso de las anotaciones en parametros ------------------------------
+@RequestParam:
+Se utiliza para extraer los valores de los parámetros de la URL o los parámetros de consulta. Puedes especificar valores predeterminados y requerir parámetros utilizando los atributos defaultValue y required, respectivamente.
+
+
+	@GetMapping("/saludo")
+	public String saludar(@RequestParam(name = "nombre", defaultValue = "Invitado") String nombre) {
+ 	   return "Hola, " + nombre + "!";
+	}
+
+@PathVariable:
+Permite extraer valores de variables de la URL. Se utiliza para mapear variables de plantilla en la URL a parámetros del método.
+
+	@GetMapping("/usuarios/{id}")
+	public String obtenerUsuario(@PathVariable Long id) {
+    	// Lógica para obtener el usuario con el ID proporcionado
+	}
+
+@RequestBody:
+Utilizado para vincular el cuerpo de la solicitud HTTP a un objeto del método. Es comúnmente utilizado cuando se envían datos complejos en el cuerpo de la solicitud, como JSON.
+
+	@PostMapping("/crear-usuario")
+	public ResponseEntity<String> crearUsuario(@RequestBody Usuario usuario) {
+ 	   // Lógica para crear un usuario a partir de los datos en el cuerpo de la solicitud
+	}
+
+@RequestHeader:
+Permite acceder a valores de las cabeceras de la solicitud HTTP.
+	@GetMapping("/info-usuario")
+	public String obtenerInformacionUsuario(@RequestHeader("User-Agent") String userAgent) {
+   	 // Lógica para utilizar el User-Agent de la cabecera de la solicitud
+	}
+
+@ModelAttribute:
+Utilizado para vincular un objeto al modelo. Se utiliza para pasar datos del cliente al servidor y viceversa.
+	@PostMapping("/guardar-usuario")
+	public String guardarUsuario(@ModelAttribute Usuario usuario) {
+  	  // Lógica para guardar el usuario
+	}
