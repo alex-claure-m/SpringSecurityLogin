@@ -48,13 +48,19 @@ pasa primero por el loggin
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
         .authorizeHttpRequests(authz -> authz
-            .requestMatchers("/login", "/register/**").permitAll() //permito al acceso de ruta login
-            .anyRequest().authenticated())
-        .formLogin(formLogin -> formLogin // aca va a ser la parte del acceso luego del login
-            .loginPage("/login")
+            .requestMatchers("/login", "/register/**").permitAll() //permito acceso a las rutas, en este caso a /login y /register sin pedir autenticacion
+            .requestMatchers("/js/**", "/css/**", "/images/**").permitAll() // permito el acceso a los recursos sin pedir autenticacion
+            .anyRequest().authenticated()) // para todos los demas rutas -endpoint, pido autenticacion
+        .formLogin(formLogin -> formLogin // esto seria el manejo del formulario dell ogin
+            .loginPage("/login") // para la seguridad, defino la ruta donde se hara el login
+            .failureUrl("/login?error=true") // para redirigir al user si la autentitcacion falla
             .defaultSuccessUrl("/dashboard",true) // a donde va a redirigir luego de aceptar las credenciales
+            .permitAll()) // permito el acceso al /login para todos los users esten o no logeados
+        //mantener esta estrucutra del logout!
+        .logout(logout -> logout // el manejo del logout es muy similar al login
+            .logoutUrl("/logout") // la direccion que debe tener cuando se quiere desloggear
+            .logoutSuccessUrl("/login?logout=true") // cuando se cierra una sesion de manera exitosa
             .permitAll())
-        .logout(logout -> logout.permitAll())
         .build();
 
   }
@@ -65,6 +71,7 @@ pasa primero por el loggin
   }
 
   // cojfiguro el spring security para cargar al usuario durante la autenticacion
+  //y de ahi usar el usuarioDetailsService y su passwordEncoder
   @Autowired
   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
     auth.userDetailsService(usuarioDetailsService).passwordEncoder(bCryptPasswordEncoder.passwordEncoder());
@@ -73,6 +80,7 @@ pasa primero por el loggin
 
   /*
   * los beans instancian , configuran e inicializan un nuevo objeto a la hora de ejecutar con spring
+  * y en este caso ignoro las solicitudes que vienen de los css, js y imagenes-> son estaticos que no necesitan seguridad
   */
   @Bean
   public WebSecurityCustomizer webSecurityCustomizer() {

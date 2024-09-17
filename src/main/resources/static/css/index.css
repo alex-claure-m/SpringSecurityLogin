@@ -1,0 +1,201 @@
+/*
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    border-radius: 5px;
+}
+*/
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 24px;
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.menu {
+    display: flex;
+    gap: 20px;
+}
+.api-data-clima p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    float: left;
+}
+.dato-clima {
+    font-family: "Acme", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    text-align: left;
+}
+.centrado {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.temperatura-sensacion-termica {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.viento-descripcion {
+    display: flex;
+    gap: 20px; /* Espacio entre "Viento" y "Descripción" */
+    justify-content: space-between;
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+}
+
+.descripcion-clima {
+    text-align: right;
+    margin-left: auto; /* Mueve el elemento a la derecha */
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vh; /* Height of the container for the first button */
+}
+
+.button-container-second {
+    display: none; /* Hidden initially */
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 20vh; /* Adjust the height based on the button */
+}
+
+.button-container-third {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vh; /* Height of the container for the third button */
+    margin-top: 10vh; /* Margin to create space between buttons */
+}
+
+.custom-button,
+.custom-button-third {
+    position: relative;
+    background-color: #2c2726;
+    border: none;
+    border-radius: 15px;
+    width: 150px;
+    height: 100px;
+    color: rgb(240, 224, 222);
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: bold;
+    overflow: hidden;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-button-second {
+    position: relative;
+    background-color: #2c2726;
+    border: none;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px; /* Shorter height for the second button */
+    color: rgb(240, 224, 222);
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: bold;
+    overflow: hidden;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*
+/* integracion del BOTON - dentor hay texto que es afectado tambien debido al div
+.custom-button-third{
+    position: absolute;
+    background-color: #2c2726;
+    border: none;
+    border-radius: 15px;
+    width: 150px; /*cuantos pixeles ancho tiene el boton
+    height: 100px; /* cuantos pixeles alto tiene el boton
+    color: rgb(240, 224, 222);
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: bold;
+    overflow: hidden;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center; /*posicion eje x imagen
+    align-items: center; /* posicion eje y imagen
+
+}
+*/
+
+.button-image { /*dimensiones de la imagen*/
+    width: 120px;
+    height: 60px;
+    opacity: 0.3;
+
+}
+
+.button-image-search{
+    display:"flex";
+    width: 30px;
+    height: 15px;
+    opacity: 0.5;
+    justify-content: left; /*posicion eje x imagen*/
+    align-items: center; /* posicion eje y imagen*/
+}
+
+.button-text { /*posicionamiento del texto dentro del boton y en la imagen*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.search-container {
+
+    display: flex;
+    align-items: center;
+}
+
+.textbox-container {
+    display: none;
+    margin-top: 25vh; /* espacio a nivel EJE Y DONDE APARECERA EL TEXTBOX*/
+    text-align: right;
+}
+
+.custom-textbox {
+    margin-top: 10px;
+    padding: 5px;
+    font-size: 16px; /*para aumentar el zoom del textbox*/
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 300px;
+}
+

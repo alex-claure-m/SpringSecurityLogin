@@ -1,6 +1,6 @@
 @Controller: Esta anotación se utiliza en las clases que actúan como controladores
 en el patrón MVC. Estas clases manejan las solicitudes HTTP y delegan el procesamiento
-de la lógica de negocio a los servicios. En tu caso, UsuarioController sería una clase @Controller.
+de la lógica de negocio a los servicios. - UsuarioController sería una clase @Controller.
 
 @Service: Esta anotación se utiliza en las clases que contienen la lógica de negocio.
 Estas clases suelen llamar a los repositorios para recuperar y almacenar datos.
@@ -23,7 +23,7 @@ tu aplicación. Estas clases no llevan ninguna de las anotaciones anteriores, pe
 anotaciones como @Entity si estás utilizando JPA.
 
 si o si spring security, trabaja con el hasheo de password , sino se hace el bobi y no te busca en la base de datos
-por eso si o si se tiene que encriptar para luego , spring desencripte e iguale si lo que escribiste coincide con el
+por eso si o si se tiene que encriptar para luego , spring desencripte e iguala si lo que escribiste coincide con el
 la base de datos
 
 clave ademas es diferenciar entre springMVC vs spring RESTFUL , son cosas distintas
@@ -38,19 +38,35 @@ donde no necesariamente labure con modelo de vistas, pero lo promordial ademas s
 	---- BUENO, TAMBIEN CON SPRING MVC PUEDO TRAJABAR CON API EXTERNAS Y ESTAN LAS SIGUIENTES ANOTACIONES
 @REQUESTMAPPING 
 Mapea las solicitudes HTTP a métodos específicos en el controlador. Puede usarse a nivel de clase y de método.
-
+------------------------------------------------------------------------------------------------
 @RequestBody y @ResponseBody:
 Se utilizan para trabajar con contenido del cuerpo de la solicitud (para enviar y recibir datos en formato 
 JSON, por ejemplo).
 
-La anotación @ResponseBody en Spring se utiliza para indicar que el valor de retorno de un método de controlador debe ser serializado directamente en el cuerpo de la respuesta HTTP. En otras palabras, se utiliza para marcar un método o un tipo de retorno como el cuerpo de la respuesta, evitando que Spring lo interprete como una vista a rendizar.
+La anotación @ResponseBody en Spring se utiliza para indicar que el valor de retorno de un método de controlador debe ser serializado directamente en el cuerpo de la respuesta HTTP.
+En otras palabras, se utiliza para marcar un método o un tipo de retorno como el cuerpo de la respuesta,
+evitando que Spring lo interprete como una vista a rendizar. y lo que debe devolver es el cuerpo de la respuesta
+asi puede ser un JSON - URL , u OBJETO
 
+Función: Indica que el valor devuelto por un método de un controlador debe ser serializado directamente
+en el cuerpo de la respuesta HTTP. Esto significa que los datos devueltos no se procesan como una vista,
+sino que se envían como una respuesta JSON, XML u otro formato.
+Uso común: Se utiliza principalmente en métodos que manejan API REST, donde la salida(retorno) del
+método debe enviarse directamente al cliente como datos EN lugar de una vista (HTML, por ejemplo).
+
+@RequestBody: (usado generalmente como argumento de un metodo!)
+Función: Indica que el cuerpo de la solicitud HTTP (normalmente JSON o XML)
+debe ser convertido en un objeto Java y vinculado al parámetro del método del controlador.
+Uso común: Se usa en métodos que reciben datos desde el cliente, donde el cuerpo de la
+solicitud contiene los datos que deben ser convertidos en un objeto Java.
 
 ejemplo:
 	@Controller
 	public class MyController {
-
+		//Endpoint al cual voy a recibir info
     	@PostMapping("/processData")
+    	//@ResponseBody: me dice como debe ser procesado los datos que recibe desde el endpoint (NO COMO VISTA)
+    	//RequestBody: los valores en si que voy a recibir del cliente para ser procesado - String data
     	@ResponseBody
     	public String processData(@RequestBody String data) {
         	// Procesar la información recibida en el cuerpo de la solicitud
@@ -112,7 +128,9 @@ Al usar un DTO, haces que tu API sea más fácil de usar. Los clientes solo nece
 
 ------------------------------------ uso de las anotaciones en parametros ------------------------------
 @RequestParam:
-Se utiliza para extraer los valores de los parámetros de la URL o los parámetros de consulta. Puedes especificar valores predeterminados y requerir parámetros utilizando los atributos defaultValue y required, respectivamente.
+Se utiliza para extraer los valores de los parámetros de la URL o los parámetros de consulta.
+Puedes especificar valores predeterminados y
+requerir parámetros utilizando los atributos defaultValue y required, respectivamente.
 
 
 	@GetMapping("/saludo")
@@ -121,7 +139,8 @@ Se utiliza para extraer los valores de los parámetros de la URL o los parámetr
 	}
 
 @PathVariable:
-Permite extraer valores de variables de la URL. Se utiliza para mapear variables de plantilla en la URL a parámetros del método.
+Permite extraer valores de variables de la URL. Se utiliza para mapear variables de plantilla en la URL a
+parámetros del método.
 
 	@GetMapping("/usuarios/{id}")
 	public String obtenerUsuario(@PathVariable Long id) {
@@ -149,3 +168,9 @@ Utilizado para vincular un objeto al modelo. Se utiliza para pasar datos del cli
 	public String guardarUsuario(@ModelAttribute Usuario usuario) {
   	  // Lógica para guardar el usuario
 	}
+
+****************************************** POSTMAPPING-GETMAPPING************************************
+@PostMapping maneja solicitudes HTTP POST.
+		Normalmente se usa para enviar datos desde el frontend hacia el servidor.
+@GetMapping maneja solicitudes HTTP GET.
+		Se usa principalmente para obtener datos del servidor o cargar una página.

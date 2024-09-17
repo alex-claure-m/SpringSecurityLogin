@@ -29,7 +29,9 @@ public class LoginController {
   }
 
   @GetMapping("/dashboard")
+  //clave el redirect:/ para que me guarde los atributos y permisos cuando pasa a index.html!
+  //sino, pasa a url dashboard sin guardarme permisos y no usa el indexController
   public String dashboard() {
-    return "index";
+    return "redirect:/";
   }
 }

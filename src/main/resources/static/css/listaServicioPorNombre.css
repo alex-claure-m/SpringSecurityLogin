@@ -1,0 +1,148 @@
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 24px;
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.menu {
+    display: flex;
+    gap: 20px;
+}
+.api-data-clima p {
+    margin: 0;
+    font-size: 12px;
+    color: #333;
+    float: left;
+}
+.dato-clima {
+    font-family: "Acme", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    text-align: left;
+}
+.centrado {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.temperatura-sensacion-termica {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.viento-descripcion {
+    display: flex;
+    gap: 20px; /* Espacio entre "Viento" y "Descripción" */
+    justify-content: space-between;
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+}
+
+.descripcion-clima {
+    text-align: right; /* mover descripcion a la derecha*/
+    margin-left: auto; /* el margen  es automatico  */
+}
+.response-search-service{
+    text-align:center
+    /*tengo que meterle mas efecto a nivel fuente*/
+}
+/*
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+/* esto es para el coloreo de la ultima fila de la tabla
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+/* linea que bordea la tabla , color verde
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #2e3131;
+}
+/*del coloreo de la ultima fila, es el color del texto
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #c44919;
+}
+*/
+.table {
+    width: 85%; /* Occupies 3/4 of the page */
+    margin: 0 auto; /* Centers the table horizontally */
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}

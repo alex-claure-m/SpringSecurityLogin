@@ -1,1 +1,86 @@
-<p> bueno, bienvenido!</p>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+    <title>Index</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/index.css}" /> <!-- asi lo pide theamleaf -->
+    <script th:src="@{/js/scriptsIndex.js}"> </script> <!-- asi lo pide theamleaf -->
+
+</head>
+<body>
+<header>
+    <div class="logo-container">
+        <div class="logo">Este es un sitio?</div>
+    </div>
+    <div class="header-content">
+        <div class="menu">
+            <a href="#">INICIO</a>
+            <a href="#">CONTACTOS</a>
+            <a href="#">PREGUNTAS</a>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            Bienvenido, <span th:text="${#authentication.name}"></span>!
+        </div>
+        <div class="api-data-clima">
+            <div class="dato-city">
+                <p class="dato-clima">Nombre Ciudad: <span th:text="${ciudad}"></span></p>
+            </div>
+            <div clas ="dato-temperatura-sensacion-termica">
+                <p class="dato-clima">Temperatura Actual: <span th:text="${temperatura}"></span>°C</p>
+                <p class="dato-clima">Sensacion Termica: <span th:text="${sensacionTermica}"></span>°C</p>
+            </div>
+            <div class="viento-descripcion">
+                <p class="dato-clima">Viento: <span th:text="${viento}"></span> km/h</p>
+                <p class="dato-clima descripcion-clima">Descripción: <span th:text="${descripcion}"></span></p>
+            </div>
+
+        </div>
+    </div>
+</header>
+	<main>
+        <div class="button-container">
+            <button class="custom-button" onclick="replaceButtonWithTextbox()">
+                <img src="https://w7.pngwing.com/pngs/61/169/png-transparent-symbol-computer-icons-magnifying-glass-google-search-symbol-miscellaneous-search-engine-optimization-logo.png" alt="Botón Imagen" class="button-image">
+                <span class="button-text">Buscar Servicio</span>
+            </button>
+            <!--
+            <div id="textbox-container" class="textbox-container" style="display:none;">
+                <img src="https://w7.pngwing.com/pngs/61/169/png-transparent-symbol-computer-icons-magnifying-glass-google-search-symbol-miscellaneous-search-engine-optimization-logo.png" alt="Botón Imagen Search" class="button-image-search">
+                <input type="text" class="custom-textbox" placeholder="Ingrese su búsqueda">
+            </div>
+            -->
+            <div class="search-container" id="searchContainer" >
+                <form th:action="@{/search_service}" method="get"> <!-- por que debo traer cuadros de los servicios cercanos por eso get -->
+                <img src="https://w7.pngwing.com/pngs/61/169/png-transparent-symbol-computer-icons-magnifying-glass-google-search-symbol-miscellaneous-search-engine-optimization-logo.png" alt="Botón Imagen Search" class="button-image-search" id="searchImage" style="display: none;">
+                <input type="text" class="custom-textbox" placeholder="Ingrese el servicio a buscar" id="searchTextbox" name="query" style="display: none;">
+                </form>
+            </div>
+        </div>
+        <div class = "button-container" onclick="replaceButtonWithButtonGeoRef()" id="searchGeoRef"> <!--function para ocultar boton y mostrar el siguiente boton-->
+            <button class="custom-button">
+                <span class="button-text">Buscar Servicio cercanos por Geolocalizacion</span>
+            </button>
+        </div>
+        <div  class="button-container-second" id="geoRefContainer" style="display: none;">
+            <button class="custom-button-second" id="buttonGeoRef" onclick="getLocationGeoRef()">
+                <span class="button-text">Confirmar Ubicacion</span>
+            </button>
+        </div>
+        <div class="button-container" id="customSearchContainer">
+            <!-- recordar que es el endopoint que tiene que vincularse con el controller -->
+            <form th:action="@{/custom-search}" method="get">
+                <button class="custom-button-third" id="customSearch">
+                    <span class="button-text">Buscar Servicio Personalizado</span>
+                </button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

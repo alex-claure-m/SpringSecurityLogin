@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.LocalDate;
+
 @Controller
 public class PersonaController {
 
@@ -32,11 +34,17 @@ public class PersonaController {
   }
   //la ruta debe coincidir con el method del html register. en este caso registration
   @PostMapping("/register")
-  public String createNewPersona(@ModelAttribute Persona persona, @RequestParam String username, @RequestParam String password) {
+  //el model atribute es toda la clase/OBJETO Persona cuando recibe del formulario del html
+  // en vez de hacer @RequestParam("nombre") String nombre, @RequestParam("apellido") String apellido, etc
+  // paso todo el MODELO del ATRIBUTO
+  public String createNewPersona(@ModelAttribute Persona persona,
+                                 @RequestParam String username,
+                                 @RequestParam String password) {
     Usuario newUser = new Usuario();
     newUser.setUsername(username);
     // newUser.setPassword(password);
     newUser.setPassword(bCryptPasswordEncoder.encode(password));
+
 
     usuarioRepository.saveAndFlush(newUser);
     persona.setUsuarioAsociado(newUser);
@@ -52,6 +60,6 @@ public class PersonaController {
     System.out.println("Nombre de usuario: " + username);
     System.out.println("Contraseña: " + password);
 
-    return "redirect:/login";
+    return "login";
   }
 }

@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /*
-* esta clase basicamente implementa la interfaz UserDetailsService de spring segurity
+* esta clase basicamente implementa la interfaz UserDetailsService de spring security
 * para cargar los datos durante la auntenticacion
 * si quiero verificar los ROLES en usuario tambien tendria que toquetear esta parte
 * */

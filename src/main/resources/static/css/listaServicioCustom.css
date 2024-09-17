@@ -1,0 +1,147 @@
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.logo {
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 24px;
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.menu {
+    display: flex;
+    gap: 20px;
+}
+.api-data-clima p {
+    margin: 0;
+    font-size: 12px;
+    color: #333;
+    float: left;
+}
+.dato-clima {
+    font-family: "Acme", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    text-align: left;
+}
+.centrado {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.temperatura-sensacion-termica {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+.viento-descripcion {
+    display: flex;
+    gap: 20px; /* Espacio entre "Viento" y "Descripción" */
+    justify-content: space-between;
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+}
+
+.descripcion-clima {
+    text-align: right; /* mover descripcion a la derecha*/
+    margin-left: auto; /* el margen  es automatico  */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 50vh; /* Altura de la mitad superior */
+}
+
+.container {
+    text-align: center;
+    width: 80%;
+}
+
+#search, #categoria, #direccion, #usargeo, #applyButton {
+    margin: 15px 0;
+}
+
+/* Estilo para los inputs de texto */
+.custom-textbox {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px; /* Esquinas semicurvadas */
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-top: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el select */
+.custom-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px; /* Esquinas semicurvadas */
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-top: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el botón deshabilitado */
+.disabled-button {
+    padding: 10px 20px;
+    border-radius: 15px; /* Esquinas semicurvadas */
+    border: 1px solid #ccc;
+    background-color: #ccc;
+    color: #fff;
+    cursor: not-allowed;
+    opacity: 0.7; /* Botón difuso */
+    margin-top: 10px;
+}
+
+/* Mensaje debajo del botón difuso */
+#usargeo p {
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
+}
+
+/* Botón de aplicar */
+.apply-button {
+    padding: 10px 20px;
+    border-radius: 15px; /* Esquinas semicurvadas */
+    border: none;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.apply-button:hover {
+    background-color: #0056b3;
+}
