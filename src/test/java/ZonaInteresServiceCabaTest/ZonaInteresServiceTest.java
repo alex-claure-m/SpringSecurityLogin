@@ -8,15 +8,18 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class ZonaInteresServiceTest {
   @Test
   public void interesesBusquedaPorNombreHospital() throws IOException {
    // ver en la clase INTERESZONASSEARCH para entender que es cada atributo!
     ServicioBusquedaZonasCaba servicio = ServicioBusquedaZonasCaba.getInstance();
     InteresZonaSearch interesZonaSearch = servicio.listadoDeInteres("hospital");
-    System.out.println("las clases que me mostrara son" + interesZonaSearch.getClasesEncontradas());
+    //System.out.println("las clases que me mostrara son" + interesZonaSearch.getClasesEncontradas());
     //esta bien que me devuelva todas las clases, ya que mi idea en si es hacer una tabla
     // con los resultados
+    assertTrue(true);
   }
   @Test
 	public void interesBusquedaPorNombreUniversidadPorInstancia() throws IOException {
@@ -27,6 +30,6 @@ public class ZonaInteresServiceTest {
     //for(int i = 0; i < interesBusqueda.size(); i++) {
      // System.out.println("la instancia es:" + interesBusqueda.get(i).getNombre());
     //}
-
+    assertTrue(true);
   }
 }

@@ -1,0 +1,13 @@
+deploy postgresql
+cuando creo un host para postgresql, en este caso render
+usar interal databaseurl como url para asociar de manera local a la base de datos
+
+jdbc:postgresql://@HOST.oregon-postgres.render.com/DATA_BASE
+
+--
+para deployar, agarrar tener en cuenta el pluggin de este proyecto y que solo debe existir una dependencia
+de postgresql, anteriormente tenia 2 , si e asi, unificalo
+los testeos unitarios, deben estar todos check!
+por que sino rompe y no funciona el comando - 	mvn clean package assembly:single -DskipTest
+
+--
