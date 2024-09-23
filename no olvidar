@@ -1,6 +1,6 @@
 deploy postgresql
 cuando creo un host para postgresql, en este caso render
-usar interal databaseurl como url para asociar de manera local a la base de datos
+usar EXTERNAL databaseurl como url (DEL RENDER , SERVICIO POSTGRESQL) para asociar de manera local a la base de datos
 
 jdbc:postgresql://@HOST.oregon-postgres.render.com/DATA_BASE
 
