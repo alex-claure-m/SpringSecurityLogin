@@ -197,7 +197,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>com.example.loggeospring.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
