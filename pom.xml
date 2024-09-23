@@ -172,7 +172,7 @@
                     <archive>
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            <mainClass>com.example.loggeospring.LoggeoSpringApplication</mainClass>
+                            <mainClass>com.example.loggeospring.Main</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
@@ -197,7 +197,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>LoggeoSpringApplication</mainClass>
+                            <mainClass>Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -222,7 +222,7 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
         </plugins>
     </build>
 
