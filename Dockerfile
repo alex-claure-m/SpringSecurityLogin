@@ -20,6 +20,6 @@ RUN mvn clean package assembly:single -DskipTests
 
 # Etapa final
 FROM openjdk:17-jdk-slim
-COPY --from=build /app/target/loggeospring-0.0.1-SNAPSHOT-jar-with-dependencies.jar loggeospring-0.0.1-SNAPSHOT.jar
+COPY --from=build /target/loggeospring-0.0.1-SNAPSHOT-jar-with-dependencies.jar loggeospring-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
 CMD ["java","-classpath","loggeospring-0.0.1-SNAPSHOT.jar","com.example.loggeospring.Main"]
