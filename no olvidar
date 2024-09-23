@@ -14,5 +14,6 @@ por que sino rompe y no funciona el comando - 	mvn clean package assembly:single
 --
 el uso del comando es dentro del folder del proyecto y los .jar los crea en la carpeta target
 --
-otra cosa es que hay que definir la clase main en todo ,por que sino el deploy del render no lo reconoce
+otra cosa es que hay que definir la clase main maven ,por que sino el deploy del render no lo reconoce
 tambien esta dentro del <plugin xxxxxxxx </pluguin
+SI no queres hacer esto -> tenes que cambiar el nombre de la clase (buscate mas info)

@@ -12,6 +12,7 @@
 
 # un archivo docker ifle contiene instrucciones para construir una imagen de docker
 # el dockerfile tiene 3 etapas
+
 # Etapa de construcción
 FROM maven:3.8.6-openjdk-18 AS build
 WORKDIR /app
