@@ -22,6 +22,6 @@ RUN mvn clean package assembly:single -DskipTests
 # Etapa final
 FROM openjdk:17-jdk-slim
 WORKDIR /app
-COPY --from=build /app/target/loggeoSpring-0.0.1-SNAPSHOT-jar-with-dependencies.jar app.jar
+COPY --from=build /app/target/loggeospring-0.0.1-SNAPSHOT-jar-with-dependencies.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
