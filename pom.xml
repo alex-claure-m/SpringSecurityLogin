@@ -171,7 +171,7 @@
                     <archive>
                         <manifest>
                             <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                            <mainClass>com.example.loggeoSpring.LoggeoSpringApplication</mainClass> <!-- Cambia esto por tu clase principal -->
+                            <mainClass>com.example.loggeospring.LoggeoSpringApplication</mainClass> <!-- Cambia esto por tu clase principal -->
                         </manifest>
                     </archive>
                     <descriptorRefs>
