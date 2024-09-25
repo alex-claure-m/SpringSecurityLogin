@@ -9,19 +9,19 @@ para deployar, agarrar tener en cuenta el pluggin de este proyecto y que solo de
 de postgresql, anteriormente tenia 2 , si e asi, unificalo
 seria mas bien la parte de maven-etc assembly:single ... etc
 los testeos unitarios, deben estar todos check!
-por que sino rompe y no funciona el comando - 	mvn clean package assembly:single -DskipTest
+por que sino rompe y no funciona el comando - 	mvn clean package -DskipTest
 
 --
 el uso del comando es dentro del folder del proyecto y los .jar los crea en la carpeta target
 --
 otra cosa es que hay que definir la clase main maven ,por que sino el deploy del render no lo reconoce
-tambien esta dentro del <plugin xxxxxxxx </pluguin
-SI no queres hacer esto -> tenes que cambiar el nombre de la clase (buscate mas info)
+tambien esta dentro del <start-class>com.example.loggeospring.Main</start-class>
+SI no queres hacer esto -> tenes que cambiar el nombre de la clase .java (buscate mas info)
 
 tengo un error temporario, debo arreglarlo cambiando el formato de application-properties
 en vez de que sea por credeciales por separado
 pasarle la url ocmpleta y de ahi anda a enviroment de intellij y cambialo
-proba para ambos , local y remotamente
+proba para ambos , local y remotamente -->> arreglado, era por esto ultimo
 
 ------------------ DOCKER COMPOSE --------------
 
@@ -56,3 +56,9 @@ services:
       - dbservice
 
 ----------------------------
+hay un tema muy clave en springboot mvc con el empaquetado docker:
+* springboot tiene un plugin que se encarga de empaquetar , no hace falta agregar un plugin de maven:assembly
+* sumado a eso labura con -jar , diferencia que con otros frameworks que podrian llegar a laburar con -classpath
+* este classpath es para referenciar la ruta donde estara el .jar
+* por eso se cambio el dockerfile
+

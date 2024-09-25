@@ -1,0 +1,18 @@
+1. ¿Por qué no se usa un classpath explícito en un proyecto Spring Boot?
+En un proyecto Spring Boot, no necesitas configurar manualmente el classpath porque el propio Spring Boot gestiona las dependencias y el empaquetado de forma automática mediante el uso del plugin spring-boot-maven-plugin o spring-boot-gradle-plugin. Estos plugins empaquetan todas las dependencias (librerías externas, recursos, etc.) en un único JAR ejecutable (a veces llamado fat JAR o über JAR).
+
+Diferencias clave:
+Java estándar con Spark, PostgreSQL, Hibernate:
+
+En aplicaciones no basadas en Spring Boot, a menudo configuras el classpath manualmente para indicar dónde encontrar las bibliotecas y recursos necesarios para la aplicación.
+El classpath define explícitamente las rutas de las dependencias (JARs) y recursos externos que la aplicación necesita en tiempo de ejecución.
+Spring Boot:
+
+Spring Boot automatiza este proceso utilizando su propio mecanismo de empaquetado. Empaqueta las dependencias dentro del JAR final, eliminando la necesidad de un classpath explícito cuando ejecutas la aplicación.
+Cuando generas el JAR ejecutable usando Spring Boot, este incluye un MANIFEST.MF dentro del archivo JAR, que especifica las dependencias y dónde están localizadas dentro del JAR, eliminando la necesidad de especificar el classpath manualmente.
+El propio Spring Boot incluye un "classloader" embebido en el JAR que resuelve las dependencias incluidas.
+Ventajas en Spring Boot:
+
+Facilita la distribución: solo necesitas un único JAR ejecutable para distribuir y ejecutar la aplicación.
+No tienes que preocuparte por gestionar rutas de dependencias o recursos, ya que todo está autocontenido.
+Uso del plugin spring-boot-maven-plugin o spring-boot-gradle-plugin que permite comandos como mvn spring-boot:run o mvn clean package, empaquetando automáticamente todas las dependencias y configurando todo correctamente.
