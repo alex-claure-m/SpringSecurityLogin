@@ -191,6 +191,7 @@
                 </executions>
             </plugin>
              -->
+            <!-- DESCOMENTAR ESTE PLUGIN SI QUERES VOLVER  25/09/24 - 09_38AM
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -203,7 +204,8 @@
                     </archive>
                 </configuration>
             </plugin>
-            <!-- EN TEORIA SPRING BOOT PUEDE HACER EL JAR CON LOS DEPENDENCIAS, TENER ESTE PLUGIN LO HACE REDUNDANTE -->
+             -->
+            <!-- EN TEORIA SPRING BOOT PUEDE HACER EL JAR CON LOS DEPENDENCIAS, TENER ESTE PLUGIN LO HACE REDUNDANTE
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -223,7 +225,7 @@
                     </execution>
                 </executions>
             </plugin>
-
+            -->
         </plugins>
     </build>
 
