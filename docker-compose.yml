@@ -1,20 +1,7 @@
-#un docker-compose defino y ejecuto las aplicaciones del DOCKERFILE
-#donde ademas
 version: '3.1'
 
 services:
-  #esta parte del enviroment es para laburar de manera local , como un backup de la bbdd
-  # montando un volumen en la ruta xxx/xxx/lib/postgresql/data
 
-  dbservice:
-    image: postgres
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: root
-      POSTGRES_DB: postgres
-    volumes:
-      - ./postgresdb:/var/lib/postgresql/data
-#aca defino los servicios que se van a correr en el contenedor/aplicacion en si
   app:
     image: ddsdeploy
     restart: always
@@ -24,6 +11,6 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://dpg-crol2q23esus73c2rh9g-a.oregon-postgres.render.com/postgres_caba
       SPRING_DATASOURCE_USERNAME: postgres_caba_user
       SPRING_DATASOURCE_PASSWORD: BI33nIH9Njvoxppetwn72KQB9UivwP9i
-      SPRING_JPA_HIBERNATE_DDL_AUTO: create
+      #SPRING_JPA_HIBERNATE_DDL_AUTO: create
     depends_on:
-      - dbservice
+      []
