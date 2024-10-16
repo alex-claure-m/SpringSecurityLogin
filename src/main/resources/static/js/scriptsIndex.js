@@ -52,7 +52,7 @@ function enviarGeoToJava(posicion){
     const latitude = posicion.coords.latitude;
     const longitude = posicion.coords.longitude;
     // creo objeto para enviarselo al backend
-    const locationData = {
+    const locationData  = {
         lat: latitude,
         lng: longitude
     };

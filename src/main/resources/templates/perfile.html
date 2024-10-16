@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
+    <title>Perfile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/perfile.css}" /> <!-- asi lo pide theamleaf -->
+    <script th:src="@{/js/perfile.js}"></script>
+
+</head>
+<body>
+<header>
+    <div class="logo-container">
+        <div class="logo">Este es un sitio?</div>
+    </div>
+    <div class="header-content">
+        <div class="menu">
+            <a th:href="@{index}" class="menu-btn">INICIO</a>
+            <a th:href="@{/index/perfile}" class="menu-btn">PERFIL</a>
+
+        </div>
+        <div class="bienvenido" sec:authorize="isAuthenticated()">
+            Bienvenido, <span th:text="${#authentication.name}"></span>!
+        </div>
+        <div class="api-data-clima">
+            <div class="dato-city">
+                <p class="dato-clima">Nombre Ciudad: <span th:text="${ciudad}"></span></p>
+            </div>
+            <div clas ="dato-temperatura-sensacion-termica">
+                <p class="dato-clima">Temperatura Actual: <span th:text="${temperatura}"></span>°C</p>
+                <p class="dato-clima">Sensacion Termica: <span th:text="${sensacionTermica}"></span>°C</p>
+            </div>
+            <div class="viento-descripcion">
+                <p class="dato-clima">Viento: <span th:text="${viento}"></span> km/h</p>
+                <p class="dato-clima descripcion-clima">Descripción: <span th:text="${descripcion}"></span></p>
+            </div>
+        </div>
+    </div>
+</header>
+<main>
+    <!-- el th:action en el form de perfile no tiene sentido, lo labura desde javascript perfile.js
+      si estuviese un th:action, estaria salteando el js y laburaria con lo que tiene el html y el back (sin el js)-->
+    <form class="actualizar-perfil" id="confirm-edit"  method="post">
+        <div class="perfil-container">
+            <!-- Columna izquierda: Imagen de perfil -->
+            <div class="imagen-perfil">
+                <img src="ruta.jpg" alt="Imagen de perfil" id="img-perfil">
+                <button id="cambiar-imagen">Cambiar Imagen</button>
+            </div>
+            <div class="datos-perfil">
+                <div class="datos-personales-name">
+                    <p>Mis datos Personales</p>
+                </div>
+                <div class="formulario-datos">
+                    <div class="nombre-perfile">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" th:value="${personaUserDTO_nombre}" readonly>
+                    </div>
+                    <div class="second-name-perfile">
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" id="apellido" th:value="${personaUserDTO_apellido}" readonly>
+                    </div>
+                    <div class="dni-class">
+                        <label for="dni">Número de Documento:</label>
+                        <input type="text" id="dni" th:value="${dni}" readonly>
+                    </div>
+                    <div class="email-perfile">
+                        <label for="email">Mail:</label>
+                        <input type="email" id="email" th:value="${personaUserDTO_email}" readonly>
+                    </div>
+                    <div class="birth-perfile">
+                        <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+                        <input type="date" id="fecha-nacimiento" th:value="${fechaNacimiento}" readonly>
+                    </div>
+                    <div class="username-perfile">
+                        <label for="usuario">Usuario:</label>
+                        <input type="text" id="usuario" th:value="${personaUserDTO_username}" readonly>
+                    </div>
+                </div>
+                <div class="botones-accion">
+                    <button id="editar-perfil" type="button">Editar Perfil</button>
+
+                </div>
+            </div>
+        </div>
+        <button type="submit" id="guardar-cambios">Guardar Cambios</button>
+    </form>
+
+</main>
+</body>

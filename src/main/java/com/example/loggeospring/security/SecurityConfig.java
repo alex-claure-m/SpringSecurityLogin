@@ -48,7 +48,7 @@ pasa primero por el loggin
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     return http
         .authorizeHttpRequests(authz -> authz
-            .requestMatchers("/login", "/register/**").permitAll() //permito acceso a las rutas, en este caso a /login y /register sin pedir autenticacion
+            .requestMatchers("/login", "/register/**", "/confirm-perfil").permitAll() //permito acceso a las rutas, en este caso a /login y /register sin pedir autenticacion
             .requestMatchers("/js/**", "/css/**", "/images/**").permitAll() // permito el acceso a los recursos sin pedir autenticacion
             .anyRequest().authenticated()) // para todos los demas rutas -endpoint, pido autenticacion
         .formLogin(formLogin -> formLogin // esto seria el manejo del formulario dell ogin

@@ -20,15 +20,42 @@ header {
     font-style: normal;
     font-size: 24px;
 }
+
+.menu a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #b9b5b5; /* Color inicial del botón */
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    background-color: #e6d6d6; /* Color más oscuro al pasar el cursor */
+}
+
 .header-content {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Espacio entre los elementos del header */
+    align-items: center; /* Centra verticalmente */
     width: 100%;
+    padding: 10px 10px; /* Agregar algo de padding para separar un poco */
+    box-sizing: border-box;
 }
+
+
 .menu {
     display: flex;
-    gap: 20px;
+    gap: 10px; /* espacio entre botones*/
 }
+
+.bienvenido {
+    flex-grow: 1; /* Hace que este elemento ocupe el espacio restante */
+    text-align: center; /* Centra el texto dentro de su propio espacio */
+    margin-left: 50px; /* Ajusta si quieres más espacio */
+}
+
 .api-data-clima p {
     margin: 0;
     font-size: 12px;

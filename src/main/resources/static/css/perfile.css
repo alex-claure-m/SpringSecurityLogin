@@ -9,6 +9,8 @@ header {
     border-radius: 5px;
 }
 
+
+
 .logo-container {
     text-align: center;
     margin-bottom: 10px;
@@ -20,6 +22,7 @@ header {
     font-style: normal;
     font-size: 24px;
 }
+
 
 .menu a {
     display: inline-block;
@@ -88,88 +91,115 @@ header {
     text-align: right; /* mover descripcion a la derecha*/
     margin-left: auto; /* el margen  es automatico  */
 }
-.response-search-service{
-    text-align:center
-    /*tengo que meterle mas efecto a nivel fuente*/
-}
-/*
-.styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    background-color: #f4f4f4;
 }
 
-.styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: center;
-}
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-/* esto es para el coloreo de la ultima fila de la tabla
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-/* linea que bordea la tabla , color verde
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #2e3131;
-}
-/*del coloreo de la ultima fila, es el color del texto
-.styled-table tbody tr.active-row {
-    font-weight: bold;
-    color: #c44919;
-}
-*/
-.table {
-    width: 85%; /* Occupies 3/4 of the page */
-    margin: 0 auto; /* Centers the table horizontally */
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-.styled-table {
+.actualizar-perfil {
     width: 100%;
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 18px;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+    border-radius: 10px;
+    box-sizing: border-box; /* Asegura que el padding no rompa el layout */
+}
+.perfil-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    width: 80%;
+    max-width: 1200px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.styled-table thead tr {
-    background-color: #009879;
-    color: #ffffff;
-    text-align: left;
+.imagen-perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.imagen-perfil img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.imagen-perfil button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.imagen-perfil button:hover {
+    background-color: #0056b3;
+}
+
+.datos-personales-name p {
+    font-size: 24px;
     font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.styled-table th, .styled-table td {
-    padding: 12px 15px;
+.formulario-datos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
+.formulario-datos div {
+    display: flex;
+    flex-direction: column;
 }
 
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-}
-
-.styled-table tbody tr.active-row {
+label {
     font-weight: bold;
-    color: #009879;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+}
+
+input[readonly] {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+.botones-accion {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
 }

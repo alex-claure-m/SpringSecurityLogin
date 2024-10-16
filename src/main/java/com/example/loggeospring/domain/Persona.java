@@ -21,6 +21,7 @@ public class Persona extends PersistenceId {
   private String telefono;
   private LocalDate fechaNacimiento;
 
+
   @OneToOne
   @JoinColumn(name = "usuario_id", referencedColumnName = "id")
   private Usuario usuarioAsociado;
